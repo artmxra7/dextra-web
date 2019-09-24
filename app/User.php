@@ -1,23 +1,34 @@
 <?php
 
+
 namespace App;
 
+
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
+
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
+    use HasRoles;
+
+    public $timestamps = false;
+
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+     protected $fillable = [
+         'user_code', 'name', 'email', 'password', 'user_birthdate', 'user_phone', 'user_gender', 'user_img', 'province_code', 'city_code', 'district_code', 'kelurahan_code', 'kode_pos',
+         'user_alamat', 'status','is_dashboard'
+     ];
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -29,11 +40,11 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The model's default values for attributes.
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
+    protected $attributes = [
+        'is_dashboard' => 1,
     ];
 }
