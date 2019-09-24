@@ -40,10 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        'partner' => [
+            'driver' => 'session',
+            'provider' => 'partners',
+        ],
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
+            'hash' => false,
+        ],
+        'partner-api' => [
+            'driver' => 'passport',
+            'provider' => 'partners',
             'hash' => false,
         ],
     ],
@@ -70,6 +78,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        'partners' => [
+            'driver' => 'eloquent',
+            'model' => App\Partner::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -95,6 +107,11 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'partners' => [
+            'provider' => 'partners',
             'table' => 'password_resets',
             'expire' => 60,
         ],
