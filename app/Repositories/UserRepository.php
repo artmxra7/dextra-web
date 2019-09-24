@@ -6,7 +6,6 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\User as UserResource;
 use App\Http\Resources\Users;
-use App\Http\Resources\UserSearchResult;
 use Carbon\Carbon;
 
 class UserRepository
