@@ -14,7 +14,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('news/json','Web\NewsController@json')->name('datatable_news');
 
     //Product
+    Route::get('product', 'Web\ProductController@index');
+    Route::get('product/json','Web\ProductController@json')->name('datatable_product');
     Route::resource('product', 'Web\ProductController');
+
+
     Route::resource('product-brands', 'Web\ProductBrandController');
     Route::resource('product-unit', 'Web\ProductUnitController');
 
