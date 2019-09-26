@@ -13,10 +13,10 @@ class RoleController extends Controller
 {
     function __construct()
     {
-        // $this->middleware('permission:role list');
-        // $this->middleware('permission:role create');
-        // $this->middleware('permission:role edit');
-        // $this->middleware('permission:role delete');
+         $this->middleware('permission:role list');
+         $this->middleware('permission:role create');
+         $this->middleware('permission:role edit');
+         $this->middleware('permission:role delete');
     }
     /**
      * Display a listing of the resource.

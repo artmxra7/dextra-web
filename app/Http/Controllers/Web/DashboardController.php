@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     function __construct()
     {
-        // $this->middleware('permission:dashboard view');
+       $this->middleware('permission:dashboard view');
     }
     public function index()
     {
