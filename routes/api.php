@@ -32,9 +32,5 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {
     Route::put('/profile', 'Api\User\UserController@update');
 
 
-    Route::resource('news', 'Api\NewsController');
-
-
-
 
 });

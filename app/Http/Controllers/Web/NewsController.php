@@ -4,47 +4,9 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\NewsRepository;
-use App\Models\News as AppNews;
-use DataTables;
-use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
-
-    protected $newsRepo;
-
-    public function __construct(NewsRepository $newsRepo)
-    {
-        $this->newsRepo = $newsRepo;
-    }
-
-
-
-
-    public function json(){
-
-        $result = $this->newsRepo->getNews();
-
-        // dd($result);
-
-        $data = collect($result);
-        return DataTables::of($data)->addColumn('aksi', function ($data) {
-            return  '<div class="btn-group">'.
-                     '<button type="button" onclick="edit(this)" class="btn btn-info btn-lg" title="edit">'.
-                     '<label class="fa fa-pencil-alt"></label></button>'.
-                     '<button type="button" onclick="hapus(this)" class="btn btn-danger btn-lg" title="hapus">'.
-                     '<label class="fa fa-trash"></label></button>'.
-                    '</div>';
-          })
-          ->addColumn('none', function ($data) {
-              return '-';
-          })
-          ->rawColumns(['aksi', 'confirmed'])
-          ->make(true);
-    }
-
-
     /**
      * Display a listing of the resource.
      *

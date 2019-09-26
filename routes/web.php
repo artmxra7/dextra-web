@@ -6,12 +6,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/', 'Web\DashboardController@index');
 
     //News-Category
-    Route::get('news-category', 'Web\NewsCategoryController@index');
-    Route::get('news-category/json','Web\NewsCategoryController@json')->name('datatable_newscat');
+    Route::resource('news-category', 'Web\NewsCategoryController');
 
     //News
-    Route::get('news', 'Web\NewsController@index');
-    Route::get('news/json','Web\NewsController@json')->name('datatable_news');
+    Route::resource('news', 'Web\NewsController');
 
     //Product
     Route::resource('product', 'Web\ProductController');
