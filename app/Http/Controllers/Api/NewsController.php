@@ -1,50 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\NewsRepository;
-use App\Models\News as AppNews;
-use DataTables;
-use Illuminate\Support\Facades\DB;
+use App\Models\News;
+use App\Http\Resources\News as NewsResource;
 
-class NewsController extends Controller
+class NewsController extends ApiController
 {
-
-    protected $newsRepo;
-
-    public function __construct(NewsRepository $newsRepo)
-    {
-        $this->newsRepo = $newsRepo;
-    }
-
-
-
-
-    public function json(){
-
-        $result = $this->newsRepo->getNews();
-
-        // dd($result);
-
-        $data = collect($result);
-        return DataTables::of($data)->addColumn('aksi', function ($data) {
-            return  '<div class="btn-group">'.
-                     '<button type="button" onclick="edit(this)" class="btn btn-info btn-lg" title="edit">'.
-                     '<label class="fa fa-pencil-alt"></label></button>'.
-                     '<button type="button" onclick="hapus(this)" class="btn btn-danger btn-lg" title="hapus">'.
-                     '<label class="fa fa-trash"></label></button>'.
-                    '</div>';
-          })
-          ->addColumn('none', function ($data) {
-              return '-';
-          })
-          ->rawColumns(['aksi', 'confirmed'])
-          ->make(true);
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -52,9 +17,17 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $news = News::where('news_status', 1)
+            ->where('news_delete', 0)
+            ->orderBy('news_date_create', 'DESC')->get();
 
-        return view('news.index');
+        $news = NewsResource::collection($news);
+
+        if (collect($news)->count()) {
+            return $this->sendResponse(0, 19, $news);
+        } else {
+            return $this->sendError(2, 4);
+        }
     }
 
     /**
