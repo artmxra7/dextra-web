@@ -9,6 +9,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Repositories\AuthRepository;
 use App\Http\Repositories\UserService;
 
+use Validator;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\VerificationEmail;
+use Illuminate\Support\Facades\Hash;
+
 class RegisterController extends ApiController
 {
     //
