@@ -46,5 +46,6 @@ class User extends Authenticatable
      */
     protected $attributes = [
         'is_dashboard' => 1,
+
     ];
 }

@@ -53,12 +53,15 @@ class AuthController extends ApiController
         );
 
         if (! Auth::guard($getUserType)->attempt($credentials)) {
+
             return $this->sendError(2, "Email atau Password Salah", (object) array());
         }
 
         $userType = ($getUserType == 'web' ? 'web' : 'partner' );
 
         $user = Auth::guard($userType)->user();
+
+
         $device = $request->except(['email', 'password']);
 
         $insertUserDevice = $this->authRepository->SaveOrUpdateDeviceData($device, $user, $userType);

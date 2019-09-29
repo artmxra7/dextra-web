@@ -132,6 +132,8 @@ class RegisterController extends ApiController
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'users_verification_type' => ($users_verification_type == 'email'),
+            'is_login' => 1,
+            'users_status' => 1,
         ];
 
 
