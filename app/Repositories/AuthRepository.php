@@ -40,9 +40,8 @@ class AuthRepository
     {
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'email' => 'required',
             'users_hp' => 'required',
-            'users_company' => 'required'
             ]);
 
         return $validator;

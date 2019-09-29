@@ -38,3 +38,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {
 
 
 });
+
+
+Route::post('user/register/step1', 'Api\User\RegisterController@registerAsUserStepOne');
+Route::post('user/register/finish', 'Api\User\RegisterController@registerAsUserFinish');
