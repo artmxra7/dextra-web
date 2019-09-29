@@ -129,12 +129,9 @@ class RegisterController extends ApiController
             'users_code' => generateFiledCode('USERS'),
             'name' => $request->name,
             'users_hp' => $request->users_hp,
-            'users_company' => $request->users_company,
-            'users_referral_code' => $request->users_referral_code,
-            'users_npwp' => $request->users_npwp,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'users_verification_type' => ($request->users_verification_type == 'email' ? 1 : 0),
+            'users_verification_type' => ($users_verification_type == 'email'),
         ];
 
 
