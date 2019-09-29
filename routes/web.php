@@ -18,6 +18,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('product/json','Web\ProductController@json')->name('datatable_product');
     Route::resource('product', 'Web\ProductController');
 
+    //Product
+    Route::get('job-category', 'Web\JobCategoryController@index');
+    Route::get('job-category/json','Web\JobCategoryController@json')->name('datatable_jobcat');
+    Route::resource('job-category', 'Web\JobCategoryController');
+
+
+
 
     Route::resource('product-brands', 'Web\ProductBrandController');
     Route::resource('product-unit', 'Web\ProductUnitController');

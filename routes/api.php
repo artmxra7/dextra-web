@@ -20,9 +20,10 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {
 
     Route::post('auth/token', 'Api\AuthController@tokencek');
     Route::post('auth/checktoken', 'Api\AuthController@ViewUserTokenExpired');
-    Route::get('banner', 'Api\BannerController@get')->name('user.banner');
 
     Route::post('/logout', 'Api\AuthController@logout')->name('user.logout');
+
+    Route::get('/job_categories', 'Api\User\JobCategoryController@index');
 
     // USER
     Route::post('/lastlogin', 'Api\User\UserController@ViewUserLastLogin');
