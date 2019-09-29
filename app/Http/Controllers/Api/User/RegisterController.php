@@ -26,18 +26,59 @@ class RegisterController extends ApiController
 
     public function registerAsUserStepOne(Request $request)
     {
-        $validator = $this->authRepository->getValidationRegisterAsUserStepOne($request);
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|min:8',
+            'password_confirmation' => 'required_with:password|same:password|min:8',
 
+        ]);
 
         if ($validator->fails()) {
             $validate = validationMessage($validator->errors());
             return $this->sendError(1, 1, $validate);
         }
 
-        $name = $request->name;
-        $users_hp = $request->users_hp;
+        $email = $request->email;
+        $password = $request->password;
+        $user_verification_type = "email";
 
-       return $this->sendResponse(0, "Success");
+        if($user_verification_type == "sms"){
+
+            $userphone = $request->users_hp;
+            $pattern = '/^0/';
+            $replacement = '+62';
+            $userphone = preg_replace($pattern, $replacement, $userphone);
+            $result = SMSverifyRequest($userphone);
+
+            if ($result->getData()->data->status == 10) {
+                return $this->sendError(2, "Verifikasi serentak ke nomor yang sama tidak diizinkan", (object) array());
+            }
+
+            if ($result->getData()->data->status == 3) {
+                return $this->sendError(2, "Nomor handphone tidak valid", (object) array());
+            }
+
+            $data = ['request_id' => $result->getData()->data->request_id];
+
+            return $this->sendResponse(0, "Kode sudah terkirim via sms", $data);
+
+        }else {
+            $random_code = rand(1000,9999);
+            $token = bin2hex(openssl_random_pseudo_bytes(16));
+
+            $data = ['code' => $random_code, 'token' => $token, 'expires' => now()->addMinutes(5), 'email' => $request->email];
+
+            $result = DB::table('verification_email')->insert($data);
+
+            if (!$result) {
+                return $this->sendError(2, "Gagal Verifikasi", (object) array());
+            }
+
+            Mail::to($request->email)->send(new VerificationEmail($data));
+            $data = ['request_id' => $token];
+
+            return $this->sendResponse(0, "Kode sudah terkirim via email", $data);
+        }
     }
 
 
