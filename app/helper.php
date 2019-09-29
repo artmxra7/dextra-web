@@ -241,3 +241,74 @@ if (! function_exists('dateForUser')) {
 		return $date;
 	}
 }
+
+
+
+/**
+ * Easy to read date for user
+ */
+if (! function_exists('dateForUser')) {
+	function dateForUser($date) {
+		$date = normalizeDateInput($date);
+
+		if ($date) {
+			return date('d F Y', strtotime($date));
+		}
+		return $date;
+	}
+}
+
+if (! function_exists('SMSverifyRequest')) {
+    function SMSverifyRequest($phone){
+        $url = 'https://api.nexmo.com/verify/json?' . http_build_query([
+            'api_key' => env('SMS_API_KEY',null),
+            'api_secret' => env('SMS_API_SECRET',null),
+            'number' => $phone,
+            'brand' => 'ON-VERIFY'
+        ]);
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+
+        return response()->json(['data' => json_decode($response)]);
+    }
+}
+
+if (! function_exists('SMSverifyCheck')) {
+	function SMSverifyCheck($request_id, $code) {
+        $url = 'https://api.nexmo.com/verify/check/json?' . http_build_query([
+			'api_key' => env('SMS_API_KEY',null),
+			'api_secret' => env('SMS_API_SECRET',null),
+			'request_id' => $request_id,
+			'code' => $code
+		]);
+
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$response = curl_exec($ch);
+
+		return response()->json(['data' => json_decode($response)]);
+	}
+}
+
+if (! function_exists('checkVerificationEmail')) {
+    function checkVerificationEmail($token, $code, $email)
+    {
+        $where = ['token' => $token, 'email' => $email];
+        $verify = DB::table('verification_email')->where($where)->first();
+
+        if ($verify) {
+            $checkExpires = ($verify->expires <= now() ? FALSE : TRUE );
+
+            if (! $checkExpires) {
+
+                return "TOKEN_EXPIRED";
+            }else if ($code != $verify->code) {
+                return "CODE_NOT_MATCH";
+            }else {
+                DB::table('verification_email')->where($where)->update(['verified_at' => now()]);
+            }
+        }
+    }
+}
