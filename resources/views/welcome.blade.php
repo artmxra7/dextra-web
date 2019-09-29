@@ -170,7 +170,7 @@
           <!-- start copy -->
           <tr>
             <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-              <p style="margin: 0;">Smart-Ads menerima permintaan untuk menggunakan alamat email ini guna membantu proses verifikasi akun Smart-Ads <a href="#">{{ $email }}</a></p>
+              <p style="margin: 0;">Dextra menerima permintaan untuk menggunakan alamat email ini guna membantu proses verifikasi akun Smart-Ads <a href="#">{{ $email }}</a></p>
             </td>
           </tr>
           <!-- end copy -->
@@ -206,7 +206,7 @@
           <!-- start copy -->
           <tr>
             <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf">
-              <p style="margin: 0;">Hormat Kami,<br> Tim Smart-Ads</p>
+              <p style="margin: 0;">Hormat Kami,<br> Tim Dextra</p>
             </td>
           </tr>
           <!-- end copy -->
