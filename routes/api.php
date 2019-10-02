@@ -25,6 +25,10 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {
 
     Route::get('/job_categories', 'Api\User\JobCategoryController@index');
 
+    Route::post('/job/create', 'Api\JobController@create');
+
+
+
     // USER
     Route::post('/lastlogin', 'Api\User\UserController@ViewUserLastLogin');
     Route::get('/status', 'Api\User\UserController@viewUserStatus');
@@ -34,9 +38,6 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {
 
 
     Route::resource('news', 'Api\NewsController');
-
-
-
 
 });
 
