@@ -20,7 +20,7 @@ class UserService
     {
         $user = new User();
         $user->users_code = generateFiledCode('USER');
-        $user->name = $request->name;
+        $user->users_name = $request->name;
         $user->users_hp = $request->users_hp;
         $user->users_company = $request->users_company;
         $user->users_referral_code = $request->users_referral_code;

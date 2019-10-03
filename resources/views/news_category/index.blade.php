@@ -43,7 +43,7 @@
                 <div class="m-portlet__head-tools">
                     <ul class="m-portlet__nav">
                         <li class="m-portlet__nav-item">
-                        <a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+                        <a href="{!! route('news-category.create') !!}" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
                             <span>
                                 <i class="la la-plus"></i>
                                 <span>Create</span>
@@ -105,7 +105,7 @@
                           ],
                     columns: [
                       {data: 'id', name: 'id'},
-                      {data: 'name', name: 'name'},
+                      {data: 'news_category_name', name: 'name'},
                       {data: 'aksi', name: 'aksi'}
                     ]
               });
@@ -198,5 +198,7 @@
                   }
               });
             }
+
+
           </script>
 @endsection

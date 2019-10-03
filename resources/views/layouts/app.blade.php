@@ -22,6 +22,8 @@
                 qs: "",
             }
         </script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script src="/js/cropit.js"></script>
 
 		<!--end::Web font -->
         <link href="{{ asset('metronic/vendors/vendors/line-awesome/css/line-awesome.css') }}" rel="stylesheet" type="text/css" />
@@ -55,7 +57,7 @@
                                 <div class="m-stack__item m-stack__item--middle m-brand__logo">
                                     <a href="" class="m-brand__logo-wrapper">
                                         <img alt="" src="{{ asset('metronic/assets/default/media/img/logo/logo.png') }}"
-                                        
+
                                     </a>
                                 </div>
                                 <div class="m-stack__item m-stack__item--middle m-brand__tools">
@@ -220,7 +222,8 @@
         <script src="{{ asset('metronic/assets/vendors/base/vendors.bundle.js') }}" type="text/javascript"></script>
 		<script src="{{ asset('metronic/assets/default/base/scripts.bundle.js') }}" type="text/javascript"></script>
 	    <script src="{{ asset('metronic/assets/vendors/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
-		<script src="{{ asset('metronic/assets/my-asset/script.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/assets/my-asset/script.js') }}" type="text/javascript"></script>
+        <script src="/js/cropit.js"></script>
 		<script>
 			var toastForm = '';
 			@foreach($errors->all() as $error)

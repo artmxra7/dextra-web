@@ -35,9 +35,6 @@ class JobController extends ApiController
     public function create(Request $request)
     {
         $users_code = Auth::user()->users_code;
-
-        // dd($users_code);
-
         $thisData = [
             'job_category_id' => $request->job_category_id,
             'job_name' => $request->job_name,

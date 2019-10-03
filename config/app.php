@@ -180,6 +180,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         LaravelFCM\FCMServiceProvider::class,
+        FarhanWazir\GoogleMaps\GMapsServiceProvider::class,
 
     ],
 
@@ -234,7 +235,9 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'FCM' => LaravelFCM\Facades\FCM::class,
-	    'FCMGroup' => LaravelFCM\Facades\FCMGroup::class, // Optional
+        'FCMGroup' => LaravelFCM\Facades\FCMGroup::class, // Optional
+
+        'GMaps' => FarhanWazir\GoogleMaps\Facades\GMapsFacade::class,
 
     ],
 

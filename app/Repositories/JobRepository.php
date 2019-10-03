@@ -12,7 +12,7 @@ class JobRepository
     public function createJobs($user_code, $thisData)
     {
 
-        $ads_cart = DB::table('jobs')
+        $create_job = DB::table('jobs')
             ->insert(
                 [
                     'users_code' => $user_code,
@@ -33,6 +33,6 @@ class JobRepository
             );
 
 
-        return $ads_cart;
+        return $create_job;
     }
 }

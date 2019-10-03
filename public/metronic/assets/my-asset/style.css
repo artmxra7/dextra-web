@@ -58,3 +58,32 @@ table .action {
 .file-upload {
     display: none;
 }
+
+
+.cropit-preview {
+    /* You can specify preview size in CSS */
+    width: 500px;
+    height: 300px;
+    background: grey;
+  }
+  .cropit-image-zoom-input {
+    width: 500px !important;
+  }
+
+  /* Translucent background image */
+  .cropit-preview-background {
+    opacity: .2;
+  }
+
+  /*
+   * If the slider or anything else is covered by the background image,
+   * use relative or absolute position on it
+   */
+  input.cropit-image-zoom-input {
+    position: relative;
+  }
+
+  /* Limit the background image by adding overflow: hidden */
+  #image-cropper {
+    overflow: hidden;
+  }

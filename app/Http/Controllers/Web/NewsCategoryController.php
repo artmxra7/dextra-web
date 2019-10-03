@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Web;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\NewsCategoryRepository;
+use App\NewsCategory;
+use Carbon\Carbon;
 use DataTables;
 
 class NewsCategoryController extends Controller
@@ -25,12 +27,15 @@ class NewsCategoryController extends Controller
 
         $data = collect($result);
         return DataTables::of($data)->addColumn('aksi', function ($data) {
-            return  '<div class="btn-group">'.
-                     '<button type="button" onclick="edit(this)" class="btn btn-info btn-lg" title="edit">'.
-                     '<label class="fa fa-pencil-alt"></label></button>'.
-                     '<button type="button" onclick="hapus(this)" class="btn btn-danger btn-lg" title="hapus">'.
-                     '<label class="fa fa-trash"></label></button>'.
-                    '</div>';
+
+
+            $button = '<a href="/news-category/'.$data->news_category_code.'/edit" id="'.$data->news_category_code.'"  class="btn btn-primary btn-sm">Edit</a>
+            </div>';
+            $button .= '<a href="/news-category/hapus/'.$data->news_category_code.'" id="'.$data->news_category_code.'"  class="btn btn-danger btn-sm">Hapus</a>
+            </div>';
+            $button .= '&nbsp;&nbsp;';
+
+            return $button;
           })
           ->addColumn('none', function ($data) {
               return '-';
@@ -58,9 +63,12 @@ class NewsCategoryController extends Controller
      */
     public function create()
     {
-        //
-    }
 
+        $breadcrumb['news-category'] = 'News Category';
+        $breadcrumb['!end!'] = 'Create News Category';
+
+        return view('news_category.create', compact('breadcrumb', ));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -69,7 +77,17 @@ class NewsCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $req = $request->all();
+
+        $newscat = new NewsCategory();
+        $newscat->news_category_code = generateFiledCode('NEWS-CATEGORIES');
+        $newscat->news_category_name = $request->input('name');
+        $newscat->created_at = Carbon::now();
+
+        $newscat->save();
+
+        return redirect()->route('news-category.index')
+        ->with('success','News Category created successfully');
     }
 
     /**
@@ -91,29 +109,67 @@ class NewsCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $result = $this->newscatRepo->getDetail($id);
+
+
+        $breadcrumb['news-category'] = 'News Category';
+        $breadcrumb['!end!'] = 'Edit News Category';
+
+        return view('news_category.edit', compact ('breadcrumb', 'result'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+
+        $update = ['news_category_name' => $request->name];
+
+        // dd($update);
+
+        NewsCategory::where('news_category_code', $id)->update($update);
+
+
+        return redirect()->route('news-category.index')
+        ->with('success','News Category updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+
+        $result = $this->newscatRepo->getDetail($id);
+
+
+        return redirect()->route('news-category.index')
+        ->with('success','News Category Deleted successfully');
     }
+
+    public function hapus($id)
+    {
+
+        $result = $this->newscatRepo->getDetail($id);
+
+        $breadcrumb['news-category'] = 'News Category';
+        $breadcrumb['!end!'] = 'Delete News Category';
+
+        return view('news_category.delete', compact ('breadcrumb', 'result'));
+    }
+
+    public function confirm(Request $request, $id)
+    {
+
+        $update = [
+            'news_category_status' => 0
+    ];
+
+        // dd($update);
+
+        NewsCategory::where('news_category_code', $id)->update($update);
+
+
+
+        return redirect()->route('news-category.index')
+        ->with('success','News Category Delete successfully');
+    }
+
 }
