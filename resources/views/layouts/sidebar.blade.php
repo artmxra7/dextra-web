@@ -49,15 +49,15 @@
                 </div>
             </li>
 
-            <li class="m-menu__item" aria-haspopup="true" sidebar-group="report"><a href="{{ url('/user') }}" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon flaticon-line-graph"></i><span class="m-menu__link-text">User</span></a></li>
+            <li class="m-menu__item" aria-haspopup="true" sidebar-group="report"><a href="{{ url('#') }}" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon flaticon-line-graph"></i><span class="m-menu__link-text">User</span></a></li>
 
 
 
-            <li class="m-menu__item" aria-haspopup="true" sidebar-group="report"><a href="{{url('coupon')}}" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon flaticon-line-graph"></i><span class="m-menu__link-text">Coupon</span></a></li>
+            <li class="m-menu__item" aria-haspopup="true" sidebar-group="report"><a href="{{url('#')}}" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon flaticon-line-graph"></i><span class="m-menu__link-text">Coupon</span></a></li>
 
-            <li class="m-menu__item" aria-haspopup="true" sidebar-group="report"><a href="{{url('commision-sales')}}" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon flaticon-line-graph"></i><span class="m-menu__link-text">Commision Sales</span></a></li>
+            <li class="m-menu__item" aria-haspopup="true" sidebar-group="report"><a href="{{url('#')}}" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon flaticon-line-graph"></i><span class="m-menu__link-text">Commision Sales</span></a></li>
 
-            <li class="m-menu__item" aria-haspopup="true" sidebar-group="report"><a href="{{url('commision-mechanic')}}" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon flaticon-line-graph"></i><span class="m-menu__link-text">Commision Mechanic</span></a></li>
+            <li class="m-menu__item" aria-haspopup="true" sidebar-group="report"><a href="{{url('#')}}" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon flaticon-line-graph"></i><span class="m-menu__link-text">Commision Mechanic</span></a></li>
 
 
 
@@ -73,7 +73,7 @@
 
                                 <li class="m-menu__item " aria-haspopup="true" sidebar-group="pk-survey"><a href="{{ url('/user_dashboard') }}" class="m-menu__link "><i class="m-menu__link-icon flaticon-file-1"><span></span></i><span class="m-menu__link-text">User Dashboard</span></a></li>
 
-                            <li class="m-menu__item " aria-haspopup="true" sidebar-group="pk-survey"><a href="{{ url('/admin') }}" class="m-menu__link "><i class="m-menu__link-icon flaticon-file-1"><span></span></i><span class="m-menu__link-text">Admin</span></a></li>
+                            <li class="m-menu__item " aria-haspopup="true" sidebar-group="pk-survey"><a href="{{ url('#') }}" class="m-menu__link "><i class="m-menu__link-icon flaticon-file-1"><span></span></i><span class="m-menu__link-text">Admin</span></a></li>
 
 
                     </ul>

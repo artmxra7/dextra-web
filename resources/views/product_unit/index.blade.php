@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Order Job')
+@section('title', 'Product unit')
 
 @section('style')
 <link href="{{ asset('metronic/assets/vendors/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
@@ -20,7 +20,7 @@
         <div class="m-subheader" style="padding:0px;margin-bottom:20px;">
             <div class="d-flex align-items-center">
                 <div class="mr-auto">
-                    <h3 class="m-subheader__title m-subheader__title--separator">Order Job</h3>
+                    <h3 class="m-subheader__title m-subheader__title--separator">Product unit</h3>
                     <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
                         <li class="m-nav__item m-nav__item--home">
                             <a href="#" class="m-nav__link m-nav__link--icon">
@@ -29,8 +29,8 @@
                         </li>
                         <li class="m-nav__separator">-</li>
                         <li class="m-nav__item">
-                            <a href="{{ url('/job-order') }}" class="m-nav__link">
-                                <span class="m-nav__link-text">Order Job</span>
+                            <a href="{{ url('/product-unit') }}" class="m-nav__link">
+                                <span class="m-nav__link-text">Product unit</span>
                             </a>
                         </li>
                     </ul>
@@ -39,20 +39,28 @@
         </div>
         <!-- END: Subheader -->
         <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-tools">
+                    <ul class="m-portlet__nav">
+                        <li class="m-portlet__nav-item">
+                        <a href="{!! route('product-unit.create') !!}" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+                            <span>
+                                <i class="la la-plus"></i>
+                                <span>Create</span>
+                            </span>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <div class="m-portlet__body">
                 <!--begin: Datatable -->
                 <table class="table table-striped table-bordered table-hover table-checkable" id="table_data">
                     <thead>
                         <tr>
+                            <th>Title</th>
 
-                            <th>Name Users</th>
-                            <th>Categories Job</th>
-                            <th>Job Code</th>
-                            <th>Job Description</th>
-                            <th>Job Location Name</th>
-                            <th>Job Create</th>
-                            <th>Aksi</th>
-
+                            <th>Action</th>
                         </tr>
                     </thead>
 
@@ -72,54 +80,31 @@
 
     <script>
             $(document).ready(function(){
+                var myVar = 1;
                $('#table_data').DataTable({
                     processing: true,
                     serverSide: true,
                     ajax: {
-                        url:'{{ route('datatable_orderjob') }}',
+                        url:'{{ route('datatable_product_unit') }}',
                     },
+                    columnDefs: [
+                            {
+                               targets: 0 ,
+                               className: 'title'
+                            },
+                            {
+                               targets: 1 ,
+                               className: 'center'
+                            },
 
 
+                          ],
                     columns: [
+                      {data: 'product_unit_name', name: 'product_unit_name'},
 
-                    {
-                        data: 'users_name',
-                        name: 'name'
-                    },
-                    {
-                        data: 'name',
-                        name: 'categories'
-                    },
-                    {
-                        data: 'job_categories_code',
-                        name: 'job_code'
-                    },
-                    {
-                        data: 'description',
-                        name: 'description'
-                    },
-                    {
-                        data: 'location_name',
-                        name: 'location'
-                    },
-                    {
-                        data: 'created_at',
-                        name: 'created'
-                    },
-                    {
-                        data: 'aksi',
-                        name: 'aksi'
-                    },
-
+                      {data: 'aksi', name: 'aksi'}
                     ]
               });
-
-
-})
-
-
-
-
-
+            });
           </script>
 @endsection

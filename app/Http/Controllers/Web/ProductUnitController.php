@@ -4,9 +4,33 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Repositories\ProductUnitRepository;
+use App\ProductUnitModel;
+use DataTables;
 
 class ProductUnitController extends Controller
 {
+    protected $prodUnitRepo;
+
+    public function __construct(ProductUnitRepository $prodUnitRepo)
+    {
+        $this->prodUnitRepo = $prodUnitRepo;
+    }
+
+    public function json(){
+        $result = $this->prodUnitRepo->getUnit();
+
+        $data = collect($result);
+
+        return DataTables::of($data)->addColumn('aksi', function($data){
+
+        })
+        ->addColumn('none', function ($data){
+            return '-';
+        })
+        ->rawColumns(['aksi', 'çonfirmed'])
+        ->make(true);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +38,7 @@ class ProductUnitController extends Controller
      */
     public function index()
     {
-        //
+        return view('product_unit.index');
     }
 
     /**
@@ -25,6 +49,10 @@ class ProductUnitController extends Controller
     public function create()
     {
         //
+        $breadcrumb['product-unit'] = 'Product Unit';
+        $breadcrumb['!end!'] = 'Create Product Unit';
+
+        return view('product_unit.create', compact('breadcrumb'));
     }
 
     /**
@@ -36,6 +64,16 @@ class ProductUnitController extends Controller
     public function store(Request $request)
     {
         //
+        $req = $request->all();
+
+        $produnit = new ProductUnitModel();
+        $produnit->product_unit_code = generateFiledCode('UNIT');
+        $produnit->product_unit_name = $request->input('name');
+
+        $produnit->save();
+
+        return redirect()->route('product-unit.index')
+        ->with('succes', 'Product Unit Created Succesfully');
     }
 
     /**

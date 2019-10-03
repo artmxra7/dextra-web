@@ -16,31 +16,50 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('news/json','Web\NewsController@json')->name('datatable_news');
     Route::resource('news', 'Web\NewsController');
 
+
+    //Job Category
+    Route::get('job-category', 'Web\JobCategoryController@index');
+    Route::get('job-category/json','Web\JobCategoryController@json')->name('datatable_jobcat');
+    Route::resource('job-category', 'Web\JobCategoryController');
+
+
+
+
+
     //Product
     Route::get('product', 'Web\ProductController@index');
     Route::get('product/json','Web\ProductController@json')->name('datatable_product');
     Route::resource('product', 'Web\ProductController');
 
-    //Product
-    Route::get('job-category', 'Web\JobCategoryController@index');
-    Route::get('job-category/json','Web\JobCategoryController@json')->name('datatable_jobcat');
-    Route::resource('job-category', 'Web\JobCategoryController');
 
-    //JOB
+    Route::get('product-brands', 'Web\ProductBrandController@index');
+    Route::get('product-brands/json','Web\ProductBrandController@json')->name('datatable_product_brand');
+    Route::resource('product-brands', 'Web\ProductBrandController');
+
+
+
+
+    Route::get('product-unit', 'Web\ProductUnitController@index');
+    Route::get('product-unit/json','Web\ProductUnitController@json')->name('datatable_product_unit');
+    Route::resource('product-unit', 'Web\ProductUnitController');
+
+
+
+
+    //Order Job
     Route::get('order-job', 'Web\OrderJobController@index');
     Route::get('order-job/json', 'Web\OrderJobController@json')->name('datatable_orderjob');
     Route::resource('order-job', 'Web\OrderJobController');
 
+    //Order Product
+    Route::get('order-product', 'Web\OrderProductController@index');
+    Route::get('order-product/json', 'Web\OrderProductController@json')->name('datatable_orderproduct');
+    Route::resource('order-job', 'Web\OrderProductController');
 
 
-
-
-    Route::resource('product-brands', 'Web\ProductBrandController');
-    Route::resource('product-unit', 'Web\ProductUnitController');
-
-    //Order
-    Route::resource('order-product', 'Web\OrderProductController');
     Route::resource('order-job', 'Web\OrderJobController');
+
+
     Route::resource('order-rental', 'Web\OrderProductController');
 
 

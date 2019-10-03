@@ -44,8 +44,8 @@
                             <div class="row">
                                 <div class="col-6 col-md-6">
                                     <div class="form-group m-form__group">
-                                        <label for="name">Title News <sup class="text-danger">*</sup></label>
-                                        {!! Form::text('name', null, array('placeholder' => 'Name Category','class' => 'form-control m-input')) !!}
+                                        <label for="title">Title News <sup class="text-danger">*</sup></label>
+                                        {!! Form::text('title', null, array('placeholder' => 'Name Category','class' => 'form-control m-input')) !!}
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                                             @else
                                                 <input class="cropit-target hidden" name="photo" />
                                             @endif
-                                            <!-- The cropit- classes above are needed
+                                                <!-- The cropit- classes above are needed
                                                 so cropit can identify these elements -->
                                         </div>
                                     </div>
@@ -87,13 +87,10 @@
 
 
                             <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-12 m--padding-top-30">
                                         <div class="form-group m-form__group">
-
-                                                        {!! Form::label('content', 'Content:') !!}
-                                                        {!! Form::textarea('content', null, ['class' => 'form-control rich-text']) !!}
-
-
+                                            {!! Form::label('content', 'Content:') !!}
+                                            {!! Form::textarea('content', null, ['class' => 'form-control rich-text']) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +106,7 @@
                                 <div class="col-12">
                                     <div class="m-form__actions text-right">
 
-                                        <a href="{{ url('news-category') }}" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder m-btn--icon"><i class="la la-ban"></i> Batal</a>
+                                        <a href="{{ url('news') }}" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder m-btn--icon"><i class="la la-ban"></i> Batal</a>
                                         <button type="button" onClick="confirmSubmitProcess(this)" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill"><i class="la la-plus-circle"></i> Buat</button>
                                     </div>
                                 </div>

@@ -42,4 +42,13 @@ class ProductBrandModel extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    protected $attributes = [
+        // 'is_dashboard' => 1,
+
+        'product_brands_status' => 1,
+
+
+
+    ];
 }

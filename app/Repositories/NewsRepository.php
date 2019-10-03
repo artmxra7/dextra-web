@@ -2,6 +2,7 @@
 
 namespace App\Http\Repositories;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class  NewsRepository
@@ -31,6 +32,28 @@ class  NewsRepository
 
 
         return $data;
+    }
+
+
+    public function createNews ($input)
+    {
+        $create_job = DB::table('news')
+            ->insert(
+                [
+                    'news_code' => generateFiledCode('NEWS'),
+                    'news_title' => $input['title'],
+                    'news_slug' => $input['slug'],
+                    'news_category_id' => $input['news_category_id'],
+                    'news_media' => $input['photo'],
+                    'news_content' => $input['content'],
+                    'news_status' => 1,
+                    'news_publisher' => $input['news_publisher'],
+                    'news_date_create' => Carbon::now(),
+                ]
+            );
+
+
+        return $create_job;
     }
 
 

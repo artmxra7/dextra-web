@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Order Job')
+@section('title', 'Order product')
 
 @section('style')
 <link href="{{ asset('metronic/assets/vendors/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
@@ -20,7 +20,7 @@
         <div class="m-subheader" style="padding:0px;margin-bottom:20px;">
             <div class="d-flex align-items-center">
                 <div class="mr-auto">
-                    <h3 class="m-subheader__title m-subheader__title--separator">Order Job</h3>
+                    <h3 class="m-subheader__title m-subheader__title--separator">Order product</h3>
                     <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
                         <li class="m-nav__item m-nav__item--home">
                             <a href="#" class="m-nav__link m-nav__link--icon">
@@ -29,8 +29,8 @@
                         </li>
                         <li class="m-nav__separator">-</li>
                         <li class="m-nav__item">
-                            <a href="{{ url('/job-order') }}" class="m-nav__link">
-                                <span class="m-nav__link-text">Order Job</span>
+                            <a href="{{ url('/product-order') }}" class="m-nav__link">
+                                <span class="m-nav__link-text">Order product</span>
                             </a>
                         </li>
                     </ul>
@@ -45,12 +45,14 @@
                     <thead>
                         <tr>
 
-                            <th>Name Users</th>
-                            <th>Categories Job</th>
-                            <th>Job Code</th>
-                            <th>Job Description</th>
-                            <th>Job Location Name</th>
-                            <th>Job Create</th>
+                            <th>Order Id</th>
+                            <th>Categories product</th>
+                            <th>Product Name</th>
+                            <th>product Brand</th>
+                            <th>No Product</th>
+                            <th>Sn Product</th>
+                            <th>Price</th>
+                            <th>Qty</th>
                             <th>Aksi</th>
 
                         </tr>
@@ -76,35 +78,43 @@
                     processing: true,
                     serverSide: true,
                     ajax: {
-                        url:'{{ route('datatable_orderjob') }}',
+                        url:'{{ route('datatable_orderproduct') }}',
                     },
 
 
                     columns: [
 
                     {
-                        data: 'users_name',
-                        name: 'name'
+                        data: 'order_id',
+                        name: 'order_id'
                     },
                     {
-                        data: 'name',
-                        name: 'categories'
+                        data: 'product_id',
+                        name: 'product_id'
                     },
                     {
-                        data: 'job_categories_code',
-                        name: 'job_code'
+                        data: 'product_title',
+                        name: 'product_title'
                     },
                     {
-                        data: 'description',
-                        name: 'description'
+                        data: 'product_brand',
+                        name: 'product_brand'
                     },
                     {
-                        data: 'location_name',
-                        name: 'location'
+                        data: 'no_product',
+                        name: 'no_product'
                     },
                     {
-                        data: 'created_at',
-                        name: 'created'
+                        data: 'sn_product',
+                        name: 'sn_product'
+                    },
+                    {
+                        data: 'price',
+                        name: 'price'
+                    },
+                    {
+                        data: 'qty',
+                        name: 'qty'
                     },
                     {
                         data: 'aksi',

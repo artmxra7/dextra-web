@@ -83,4 +83,8 @@ class News extends Model
     // {
     //     return $this->belongsTo(NewsCategory::class);
     // }
+
+    protected $attributes = [
+        'news_delete' => 0,
+    ];
 }

@@ -8,6 +8,7 @@ use App\Http\Repositories\NewsRepository;
 use App\Models\News as AppNews;
 use App\NewsCategory;
 use DataTables;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
@@ -35,13 +36,13 @@ class NewsController extends Controller
 
             // $button = '<a href="/order-job/'.$data->news_code.'" id="'.$data->news_code.'" class="btn btn-primary btn-sm">Detail</a>
             // </div>';
-            $button = '&nbsp;&nbsp;';
-            $button .= '<a class="btn btn-primary btn-sm">Edit</a>
-            </div>';
-            $button .= '&nbsp;&nbsp;';
-            $button .= '<a  class="btn btn-danger btn-sm">Hapus</a>
-            </div>';
-            return $button;
+            // $button = '&nbsp;&nbsp;';
+            // $button .= '<a class="btn btn-primary btn-sm">Edit</a>
+            // </div>';
+            // $button .= '&nbsp;&nbsp;';
+            // $button .= '<a  class="btn btn-danger btn-sm">Hapus</a>
+            // </div>';
+            // return $button;
           })
 
           ->rawColumns(['aksi'])
@@ -77,15 +78,20 @@ class NewsController extends Controller
         return view('news.create' , compact('breadcrumb', 'news_categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $input['slug'] = str_slug($input['title']);
+        $input['photo'] =  uploadFotoWithFileName($input['photo'], 'news');
+        $input['news_publisher'] = Auth::user()->users_name;
+
+        // dd($input);
+
+        $news = $this->newsRepo->createNews($input);
+
+        return redirect()->route('news.index')
+        ->with('success','News created successfully');
     }
 
     /**
