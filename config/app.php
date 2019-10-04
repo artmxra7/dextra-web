@@ -181,6 +181,8 @@ return [
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         LaravelFCM\FCMServiceProvider::class,
         FarhanWazir\GoogleMaps\GMapsServiceProvider::class,
+Intervention\Image\ImageServiceProvider::class
+
 
     ],
 
@@ -238,6 +240,7 @@ return [
         'FCMGroup' => LaravelFCM\Facades\FCMGroup::class, // Optional
 
         'GMaps' => FarhanWazir\GoogleMaps\Facades\GMapsFacade::class,
+'Image' => Intervention\Image\Facades\Image::class
 
     ],
 
