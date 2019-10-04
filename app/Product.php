@@ -20,7 +20,7 @@ class Product extends Model
     protected $dates = ['deleted_at'];
 
     protected $attributes = [
-        'product_delete' => 1,
+        'product_delete' => 0,
     ];
 
 

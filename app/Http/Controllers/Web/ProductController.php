@@ -98,7 +98,9 @@ class ProductController extends Controller
             foreach($request->file('filename') as $image)
             {
                 $name=url("/images") . "/" .$image->getClientOriginalName();
-                $image->move('/images/', $name);
+                $image->move('images', $name);
+
+
                 $photos[] = $name;
             }
          }
