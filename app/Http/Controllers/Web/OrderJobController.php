@@ -116,8 +116,8 @@ class OrderJobController extends Controller
     {
         $result = $this->OrderJobRepo->getDetail($id);
         $data = collect($result);
-        
-        dd($result);
+
+        // dd($result);
 
         $rightTopControls = ['document.getElementById("rightTopControl")'];
         $this->gmap->injectControlsInRightTop = $rightTopControls;
