@@ -115,9 +115,9 @@ class OrderJobController extends Controller
     public function show($id)
     {
         $result = $this->OrderJobRepo->getDetail($id);
-        $data = collect($result);
+        // $data = collect($result);
 
-         dd($data->latitude);
+         dd($result->latitude);
 
         $rightTopControls = ['document.getElementById("rightTopControl")'];
         $this->gmap->injectControlsInRightTop = $rightTopControls;
