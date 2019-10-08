@@ -139,7 +139,7 @@ class OrderJobController extends Controller
         $marker = array();
 
         $marker['c'] = true;
-        $marker['position'] = ''.$data->latitude.', '.$data->longtitude.'';
+        $marker['position'] = ''.$result->latitude.', '.$result->longtitude.'';
         $marker['ondragend'] = '
         iw_'. $this->gmap->map_name .'.close();
         reverseGeocode(event.latLng, function(status, result, mark){
