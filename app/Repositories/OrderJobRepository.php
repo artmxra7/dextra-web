@@ -70,7 +70,7 @@ class OrderJobRepository
         )
         ->leftJoin('users as u', DB::raw('BINARY jobs.users_code'), '=', DB::raw('BINARY u.users_code'))
         ->leftJoin('job_categories as jobcat', DB::raw('BINARY jobs.job_categories_code'), '=', DB::raw('BINARY jobcat.job_categories_code'))
-        ->where('jobs.job_categories_code', $id)
+        ->where('jobs.job_code', $id)
         ->limit(1)
         ->first();
 
