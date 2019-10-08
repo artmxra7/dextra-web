@@ -47,6 +47,7 @@ class  NewsRepository
                     'news_media' => $input['photo'],
                     'news_content' => $input['content'],
                     'news_status' => 1,
+                    'news_delete' => 0,
                     'news_publisher' => $input['news_publisher'],
                     'news_date_create' => Carbon::now(),
                 ]

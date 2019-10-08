@@ -83,8 +83,10 @@ class NewsController extends Controller
     {
         $input = $request->all();
         $input['slug'] = str_slug($input['title']);
-        $input['photo'] =  uploadFotoWithFileName($input['photo'], 'news');
+        $input['photo'] =  base64ToPng($input['photo'], $input['slug'], 'news');
         $input['news_publisher'] = Auth::user()->users_name;
+
+        // dd($input);
 
         // dd($input);
 

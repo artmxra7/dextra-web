@@ -85,6 +85,6 @@ class News extends Model
     // }
 
     protected $attributes = [
-        'news_delete' => 0,
+    'news_delete' => 0,
     ];
 }

@@ -33,7 +33,7 @@ class OrderJobController extends Controller
         // dd($result->items);
         return DataTables::of($data)
         ->addColumn('aksi', function ($data) {
-            $button = '<a href="/order-job/'.$data->job_categories_code.'" id="'.$data->job_categories_code.'" class="btn btn-primary btn-sm">Detail</a>
+            $button = '<a href="/order-job/'.$data->job_code.'" id="'.$data->job_code.'" class="btn btn-primary btn-sm">Detail</a>
             </div>';
             return $button;
           })
@@ -115,6 +115,7 @@ class OrderJobController extends Controller
     public function show($id)
     {
         $result = $this->OrderJobRepo->getDetail($id);
+        $data = collect($result);
 
         $rightTopControls = ['document.getElementById("rightTopControl")'];
         $this->gmap->injectControlsInRightTop = $rightTopControls;
@@ -136,7 +137,7 @@ class OrderJobController extends Controller
         $marker = array();
 
         $marker['c'] = true;
-        $marker['position'] = '-6.21462, 106.84513';
+        $marker['position'] = ''.$data->latitude.', '.$data->longtitude.'';
         $marker['ondragend'] = '
         iw_'. $this->gmap->map_name .'.close();
         reverseGeocode(event.latLng, function(status, result, mark){

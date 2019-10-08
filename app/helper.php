@@ -210,6 +210,21 @@ if (!function_exists('validationMessage')) {
     }
 }
 
+if (! function_exists('base64ToPng') ) {
+    function base64ToPng ($base64, $title) {
+        $file_name = generateFiledCode($title).'.png';
+        $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64));
+        $insert_image = Storage::disk('public')->put($file_name, $data);
+
+
+        if ($insert_image) {
+            return $file_name;
+        }
+
+        return false;
+    }
+}
+
 /**
  * Normalize date input
  */

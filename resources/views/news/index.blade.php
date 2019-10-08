@@ -122,7 +122,10 @@
                       {data: 'nonews', name: 'nonews'},
                       {data: 'news_title', name: 'news_title'},
                       {data: 'news_category_name', name: 'name'},
-                      {data: 'news_media', name: 'news_media'},
+                      {data: 'news_media', name: 'news_media', render: function( data, type, full, meta ) {
+                        return '<img src="data:image/jpeg;base64,'+ data + '" width="150px" height="150px">';
+
+                    }},
                       {data: 'news_content', name: 'news_content', "render": function ( data, type, row, meta ) {
                         return type === 'display' && data.length > 40 ?
                           '<span title="'+data+'">'+data.substr( 0, 38 )+'...</span>' :

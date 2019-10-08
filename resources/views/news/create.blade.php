@@ -61,6 +61,7 @@
                                 <div class="col-sm-12 m--padding-top-30">
                                     <div class="form-group m-form__group">
                                         <label for="name">Image News <sup class="text-danger">*</sup></label>
+                                        {!! Form::label('photo', 'Photo:') !!}
                                         <div id="image-cropper">
                                         <!-- This is where the preview image is displayed -->
                                             <div class="cropit-preview"></div>
@@ -71,7 +72,7 @@
                                             <input type="range" class="cropit-image-zoom-input" />
                                             <br>
                                             <!-- This is where user selects new image -->
-                                            <input type="file" class="cropit-image-input" />
+                                            <input type="file" class="cropit-image-input" name="photo" />
 
                                             @if (isset($news))
                                                 <input class="cropit-target hidden" name="photo" value="{{ asset('storage/news/' . $news->photo) }}" />
@@ -90,7 +91,7 @@
                                     <div class="col-sm-12 m--padding-top-30">
                                         <div class="form-group m-form__group">
                                             {!! Form::label('content', 'Content:') !!}
-                                            {!! Form::textarea('content', null, ['class' => 'form-control rich-text']) !!}
+                                            {!! Form::textarea('content', null, ['class' => 'form-control rich-text', 'required' => true,]) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -126,13 +127,14 @@
    $(function() {
     if ($('#image-cropper').length > 0) {
         $('#image-cropper').cropit({
-            imageBackground: false
+            imageBackground: true
         });
         $('#image-cropper').cropit('imageSrc', $('.cropit-target').val())
         $('.cropit-trigger').on('click', function (e) {
             $('.cropit-target').val($('#image-cropper').cropit('export'))
         })
     }
+
       });
   </script>
 
