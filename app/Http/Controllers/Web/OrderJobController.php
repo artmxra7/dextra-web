@@ -117,7 +117,7 @@ class OrderJobController extends Controller
         $result = $this->OrderJobRepo->getDetail($id);
         // $data = collect($result);
 
-         dd($result->latitude);
+        //  dd($result->latitude);
 
         $rightTopControls = ['document.getElementById("rightTopControl")'];
         $this->gmap->injectControlsInRightTop = $rightTopControls;
@@ -125,7 +125,7 @@ class OrderJobController extends Controller
         $config = array();
 
         $config['zoom'] = '20';
-        $config['center'] = '-6.347138, 106.8067201';
+        $config['center'] = ''.$result->latitude.', '.$result->longtitude.'';
         $config['map_height'] = '500px';
         $config['onboundschanged'] = 'if (!centreGot) {
             var mapCentre = map.getCenter();
