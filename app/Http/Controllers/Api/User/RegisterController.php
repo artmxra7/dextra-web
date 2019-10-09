@@ -127,7 +127,7 @@ class RegisterController extends ApiController
 
         $thisData = [
             'users_code' => generateFiledCode('USERS'),
-            'name' => $request->name,
+            'users_name' => $request->name,
             'users_hp' => $request->users_hp,
             'email' => $request->email,
             'password' => Hash::make($request->password),
