@@ -84,12 +84,12 @@ class AuthRepository
     {
         $user = new User([
             'users_code' => generateFiledCode('USERS'),
-            'name' => $request->name,
+            'users_name' => $request->name,
             'users_hp' => $request->users_hp,
             'users_company' => $request->users_company,
             'users_referral_code' => $request->refferalcode,
             'users_npwp' => $request->npwp,
-            'users_email' => $request->email,
+            'email' => $request->email,
             'users_password' => bcrypt($request->password),
             'users_verification_type' => $request->verification_type
         ]);
