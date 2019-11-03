@@ -96,7 +96,7 @@ class JobRepository
             ->insert(
                 [
                     'users_code' => $user_code,
-                    'job_category_id' => $thisData['job_category_id'],
+                    'job_categories_code' => $thisData['job_category_id'],
                     'job_name' => $thisData['job_name'],
                     'job_code' => $thisData['job_code'],
                     'model' => $thisData['job_model'],
