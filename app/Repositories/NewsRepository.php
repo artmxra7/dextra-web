@@ -37,6 +37,8 @@ class  NewsRepository
 
     public function createNews ($input)
     {
+
+
         $create_job = DB::table('news')
             ->insert(
                 [
@@ -52,8 +54,6 @@ class  NewsRepository
                     'news_date_create' => Carbon::now(),
                 ]
             );
-
-
         return $create_job;
     }
 

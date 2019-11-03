@@ -181,7 +181,7 @@ return [
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         LaravelFCM\FCMServiceProvider::class,
         FarhanWazir\GoogleMaps\GMapsServiceProvider::class,
-Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class
 
 
     ],

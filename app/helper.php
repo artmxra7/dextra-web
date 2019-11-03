@@ -17,6 +17,7 @@ if (!function_exists('getAuthenticateUser')) {
     }
 }
 
+
 if (!function_exists('sendNotifToFirebase')) {
     function sendNotifToFirebase($token, $title, $message, $data)
     {
@@ -105,70 +106,70 @@ if (!function_exists('generateBreadcrumb')) {
     }
 }
 
-if (!function_exists('translate_message')) {
-    /**
-     * translate message return API.
-     *
-     * @param string $code
-     * @param string $lang
-     */
-    function translate_message($code = '0', $lang = 'indonesian')
-    {
-        if ($lang == 'indonesian') {
-            $message = array(
-                '0' => 'sukses',
-                '1' => 'Parameter error',
-                '2' => 'Username atau password salah',
-                '3' => 'Pencarian tidak ditemukan',
-                '4' => 'Data tidak ditemukan',
-                '5' => 'Register error',
-                '6' => 'Forgot password error',
-                '7' => 'Change password error',
-                '8' => 'Update data error',
-                '9' => 'Save data error',
-                '10' => 'Delete data error',
-                '11' => 'Invalid access token',
-                '12' => 'Failed to send email',
-                '13' => 'Invalid forgot token',
-                '14' => 'Invalid Code',
-                '15' => 'Failed to upload photo',
-                '16' => 'Akun anda belum aktif',
-                '17' => 'Akun Anda di-suspend',
-                '18' => 'Session Anda telah habis',
-                '19' => 'Data ditemukan',
-                '20' => 'Data berhasil di buat',
-                '21' => 'Data gagal di buat',
-                '22' => 'Login berhasil',
-                '23' => 'Logout berhasil',
-                '24' => 'Logout gagal',
-                '25' => 'Update data berhasil',
-                '26' => 'exist',
-                '27' => 'not exist',
-                '28' => 'Update profile berhasil',
-                '29' => 'Update profile gagal',
-                '30' => 'Delete data berhasil',
-                '31' => 'Valid Token',
-                '32' => 'Invalid Token',
-                '33' => 'Email tidak terdaftar',
-                '34' => 'Link atur ulang kata sandi telah dikirim',
-                '35' => 'Password lama tidak cocok',
-                '36' => 'Email sudah terdaftar',
-                '37' => 'Gagal',
-                '38' => 'Akun sudah terdaftar, dan menunggu persetujuan Admin',
-                '39' => 'Member Suspend',
-                '40' => 'Member sudah terdaftar',
-                '41' => 'Kuota Event telah penuh',
-                '42' => 'Pendaftaran telah melebihi batas waktu',
-                '43' => 'User yang sudah terdaftar melebihi batas maksimal',
-                '44' => 'QR Generate required',
-                '45' => 'Anda telah bergabung di event ini.',
-                '46' => 'Anda belum bergabung di event ini.',
-            );
+// if (!function_exists('translate_message')) {
+//     /**
+//      * translate message return API.
+//      *
+//      * @param string $code
+//      * @param string $lang
+//      */
+//     function translate_message($code = '0', $lang = 'indonesian')
+//     {
+//         if ($lang == 'indonesian') {
+//             $message = array(
+//                 '0' => 'sukses',
+//                 '1' => 'Parameter error',
+//                 '2' => 'Username atau password salah',
+//                 '3' => 'Pencarian tidak ditemukan',
+//                 '4' => 'Data tidak ditemukan',
+//                 '5' => 'Register error',
+//                 '6' => 'Forgot password error',
+//                 '7' => 'Change password error',
+//                 '8' => 'Update data error',
+//                 '9' => 'Save data error',
+//                 '10' => 'Delete data error',
+//                 '11' => 'Invalid access token',
+//                 '12' => 'Failed to send email',
+//                 '13' => 'Invalid forgot token',
+//                 '14' => 'Invalid Code',
+//                 '15' => 'Failed to upload photo',
+//                 '16' => 'Akun anda belum aktif',
+//                 '17' => 'Akun Anda di-suspend',
+//                 '18' => 'Session Anda telah habis',
+//                 '19' => 'Data ditemukan',
+//                 '20' => 'Data berhasil di buat',
+//                 '21' => 'Data gagal di buat',
+//                 '22' => 'Login berhasil',
+//                 '23' => 'Logout berhasil',
+//                 '24' => 'Logout gagal',
+//                 '25' => 'Update data berhasil',
+//                 '26' => 'exist',
+//                 '27' => 'not exist',
+//                 '28' => 'Update profile berhasil',
+//                 '29' => 'Update profile gagal',
+//                 '30' => 'Delete data berhasil',
+//                 '31' => 'Valid Token',
+//                 '32' => 'Invalid Token',
+//                 '33' => 'Email tidak terdaftar',
+//                 '34' => 'Link atur ulang kata sandi telah dikirim',
+//                 '35' => 'Password lama tidak cocok',
+//                 '36' => 'Email sudah terdaftar',
+//                 '37' => 'Gagal',
+//                 '38' => 'Akun sudah terdaftar, dan menunggu persetujuan Admin',
+//                 '39' => 'Member Suspend',
+//                 '40' => 'Member sudah terdaftar',
+//                 '41' => 'Kuota Event telah penuh',
+//                 '42' => 'Pendaftaran telah melebihi batas waktu',
+//                 '43' => 'User yang sudah terdaftar melebihi batas maksimal',
+//                 '44' => 'QR Generate required',
+//                 '45' => 'Anda telah bergabung di event ini.',
+//                 '46' => 'Anda belum bergabung di event ini.',
+//             );
 
-            return isset($message[$code]) ? $message[$code] : $code.' - Kode tersebut belum terdefinisi di dalam sistem kami.';
-        }
-    }
-}
+//             return isset($message[$code]) ? $message[$code] : $code.' - Kode tersebut belum terdefinisi di dalam sistem kami.';
+//         }
+//     }
+// }
 
 /*
  *  Encode base64 image and save to Storage
@@ -177,8 +178,9 @@ if (!function_exists('uploadFotoWithFileName')) {
     function uploadFotoWithFileName($base64Data, $file_prefix_name)
     {
         $file_name = generateFiledCode($file_prefix_name).'.png';
-        $insert_image = Storage::disk('public')->put($file_name, normalizeAndDecodeBase64Photo($base64Data));
 
+        $insert_image = Storage::disk('public')->put($file_name, normalizeAndDecodeBase64Photo($base64Data));
+        dd($insert_image);
         if ($insert_image) {
             return $file_name;
         }
@@ -196,6 +198,8 @@ if (!function_exists('uploadFotoWithFileName')) {
             '[removed]',
         );
         $base64Data = str_replace($replaceList, '', $base64Data);
+
+        dd($base64Data);
 
         return base64_decode($base64Data);
     }
@@ -225,6 +229,22 @@ if (! function_exists('base64ToPng') ) {
     }
 }
 
+if (! function_exists('uploadImg') ) {
+    function uploadImg ($file, $title) {
+        $file_name = generateFiledCode($title).'.png';
+        $filenameWithExt = $file->getClientOriginalName();
+        $extension = $file->getClientOriginalExtension();
+        $fileNameToStore= $file_name.'_'.time().'.'.$extension;
+        $path = $file->storeAs('public/cover_images', $fileNameToStore);
+
+
+        if ($path) {
+            return $fileNameToStore;
+        }
+
+        return false;
+    }
+}
 /**
  * Normalize date input
  */
@@ -257,21 +277,6 @@ if (! function_exists('dateForUser')) {
 	}
 }
 
-
-
-/**
- * Easy to read date for user
- */
-if (! function_exists('dateForUser')) {
-	function dateForUser($date) {
-		$date = normalizeDateInput($date);
-
-		if ($date) {
-			return date('d F Y', strtotime($date));
-		}
-		return $date;
-	}
-}
 
 if (! function_exists('SMSverifyRequest')) {
     function SMSverifyRequest($phone){

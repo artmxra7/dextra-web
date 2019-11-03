@@ -17,21 +17,12 @@ class JobController extends ApiController
     {
         $this->jobRepo = $JobRepo;
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request)
     {
         $users_code = Auth::user()->users_code;
@@ -113,5 +104,44 @@ class JobController extends ApiController
     public function destroy($id)
     {
         //
+    }
+
+    public function getAllJob(Request $request)
+    {
+        $users_code = Auth::user()->users_code;
+        $limit = $request->limit;
+        $offset = $request->offset;
+
+        $job_list = $this->jobRepo->listAllJob($limit, $offset);
+
+        if ($job_list->count() > 0) {
+            $result = $this->sendResponse(0, 'Sukses', $job_list);
+        } elseif ($job_list->count() == 0) {
+            $result = $this->sendResponse(0, 'Data kosong');
+        } else {
+            $result = $this->sendError(2, 'Error');
+        }
+
+        return $result;
+    }
+
+    public function getJobUser(Request $request)
+    {
+        $users_code = Auth::user()->users_code;
+        $limit = $request->limit;
+        $offset = $request->offset;
+
+        $job_list = $this->jobRepo->listAllJobUser($users_code, $limit, $offset);
+
+        if ($job_list->count() > 0) {
+            $result = $this->sendResponse(0, 'Sukses', $job_list);
+        } elseif ($job_list->count() == 0) {
+
+            $result = $this->sendResponse(0, 'Data kosong');
+        } else {
+            $result = $this->sendError(2, 'Error');
+        }
+
+        return $result;
     }
 }

@@ -25,22 +25,49 @@ class Ads extends JsonResource
     }
 }
 
-class daftarAds extends JsonResource
+class daftarJob extends JsonResource
 {
 
     public function toArray($request)
     {
 
         return [
-            'ads_code' => $this->ads_code,
-            'ads_name' => $this->ads_name,
-            'product_name' => $this->product_name,
-            'product_car_name' => $this->product_car_name,
-            'product_car_loc_name' => $this->product_car_loc_name,
-            'ads_start_date' => $this->ads_start_date,
-            'product_car_filename' => asset('storage/'. $this->product_car_filename),
-            'ads_end_date' => $this->ads_end_date,
-            'ads_cart_status' => $this->ads_cart_status
+            'job_code' => $this->job_code,
+            'job_name' => $this->job_name,
+            'model' => $this->model,
+            'brand' => $this->brand,
+            'job_serial_number' => $this->job_serial_number,
+            'location_name' => $this->location_name,
+            'location_description' => $this->location_description,
+            'created_at' => $this->created_at,
+            'status' => $this->status,
+            'users_name' => $this->users_name,
+            'email' => $this->email,
+            'users_hp' => $this->users_hp,
+
+        ];
+    }
+}
+
+class daftarJobUser extends JsonResource
+{
+
+    public function toArray($request)
+    {
+
+        return [
+            'job_code' => $this->job_code,
+            'job_name' => $this->job_name,
+            'model' => $this->model,
+            'brand' => $this->brand,
+            'job_serial_number' => $this->job_serial_number,
+            'location_name' => $this->location_name,
+            'location_description' => $this->location_description,
+            'created_at' => $this->created_at,
+            'status' => $this->status,
+            'users_name' => $this->users_name,
+            'email' => $this->email,
+            'users_hp' => $this->users_hp,
 
         ];
     }
