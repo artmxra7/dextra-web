@@ -22,7 +22,7 @@ class News extends JsonResource
             'news_media' => $this->news_media,
             'news_publisher' => $this->news_publisher,
             'news_date_create' => $this->news_date_create,
-            'news_media_link' => ($this->news_media == null ? asset('assets/img/default.jpg') : asset('storage/' . $this->news_media)),
+            'news_media_link' => ($this->news_media == null ? asset('assets/img/default.jpg') : asset('storage/cover_images/' . $this->news_media)),
         ];
     }
 }
