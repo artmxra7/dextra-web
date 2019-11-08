@@ -46,6 +46,9 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {
     //news
     Route::resource('news', 'Api\NewsController');
 
+    //news
+    Route::resource('product', 'Api\ProductController');
+
 });
 
 

@@ -2,37 +2,44 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Repositories\ProductRepository;
+use App\Product;
 
-class ProductController extends Controller
+class ProductController extends ApiController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    protected $prodRepo;
+
+    public function __construct(ProductRepository $prodRepo)
+    {
+        $this->prodRepo = $prodRepo;
+    }
+
+
     public function index()
     {
+        $product =  $this->prodRepo->getProductAPI();
+        if ($product->count() > 0) {
+            $result = $this->sendResponse(0, 'Sukses', $product);
+        } elseif ($product->count() == 0) {
+            $result = $this->sendResponse(0, 'Data kosong');
+        } else {
+            $result = $this->sendError(2, 'Error');
+        }
 
+        return $result;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
+
     public function create()
-    {
-        //
-    }
+    { }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //
