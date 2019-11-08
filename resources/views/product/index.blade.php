@@ -3,13 +3,14 @@
 @section('title', 'Product')
 
 @section('style')
-<link href="{{ asset('metronic/assets/vendors/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('metronic/assets/vendors/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
+    type="text/css" />
 @endsection()
 
 @section('sidebar')
-    @parent
+@parent
 
-    @include('layouts.sidebar')
+@include('layouts.sidebar')
 @endsection
 
 @section('content')
@@ -43,12 +44,13 @@
                 <div class="m-portlet__head-tools">
                     <ul class="m-portlet__nav">
                         <li class="m-portlet__nav-item">
-                        <a href="{!! route('product.create') !!}" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
-                            <span>
-                                <i class="la la-plus"></i>
-                                <span>Create</span>
-                            </span>
-                        </a>
+                            <a href="{!! route('product.create') !!}"
+                                class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+                                <span>
+                                    <i class="la la-plus"></i>
+                                    <span>Create</span>
+                                </span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -59,6 +61,8 @@
                     <thead>
                         <tr>
                             <th>Title</th>
+                            <th>Brand</th>
+                            <th>Images</th>
                             <th>No Product</th>
                             <th>Price Piece</th>
                             <th>Price Box</th>
@@ -76,13 +80,15 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('metronic/assets/vendors/base/vendors.bundle.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('metronic/assets/vendors/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('metronic/assets/default/custom/crud/datatables/basic/pagination_user.js') }}" type="text/javascript"></script>
+<script src="{{ asset('metronic/assets/vendors/base/vendors.bundle.js') }}" type="text/javascript"></script>
+<script src="{{ asset('metronic/assets/vendors/custom/datatables/datatables.bundle.js') }}" type="text/javascript">
+</script>
+<script src="{{ asset('metronic/assets/default/custom/crud/datatables/basic/pagination_user.js') }}"
+    type="text/javascript"></script>
 
 
-    <script>
-            $(document).ready(function(){
+<script>
+    $(document).ready(function(){
                 var myVar = 1;
                $('#table_data').DataTable({
                     processing: true,
@@ -97,22 +103,30 @@
                             },
                             {
                                targets: 1 ,
+                               className: 'product_brands_name'
+                            },
+                            {
+                                targets: 2 ,
+                                className: 'photo'
+                             },
+                            {
+                               targets: 3 ,
                                className: 'no_product'
                             },
                             {
-                               targets: 2 ,
+                               targets: 4 ,
                                className: 'price_piece'
                             },
                             {
-                                targets: 3 ,
+                                targets: 5 ,
                                 className: 'price_box'
                              },
                             {
-                               targets: 4 ,
+                               targets: 6 ,
                                className: 'is_active'
                             },
                             {
-                                targets: 5 ,
+                                targets: 7 ,
                                 className: 'center'
                              },
 
@@ -120,13 +134,25 @@
                           ],
                     columns: [
                       {data: 'title', name: 'title'},
+                      {data: 'product_brands_name', name: 'product_brands_name'},
+                      {data: 'photo_highlight', name: 'photo_highlight' , render: function( data, type, full, meta ) {
+                        return '<img src="images/'+ data + '" width="150px" height="150px">';
+
+                    }},
                       {data: 'no_product', name: 'no_product'},
                       {data: 'price_piece', name: 'price_piece'},
                       {data: 'price_box', name: 'price_box'},
-                      {data: 'is_active', name: 'is_active'},
+                      {data: 'is_active', name: 'is_active',  render: function( data, type, row) {
+                        if (data === '1') {
+                            return 'Active';
+                            } else {
+                            return 'No';
+                            }
+
+                    }},
                       {data: 'aksi', name: 'aksi'}
                     ]
               });
             });
-          </script>
+</script>
 @endsection

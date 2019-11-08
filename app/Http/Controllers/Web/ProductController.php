@@ -97,13 +97,15 @@ class ProductController extends Controller
 
             foreach($request->file('filename') as $image)
             {
-                $name=url("/images") . "/" .$image->getClientOriginalName();
+                $name= $image->getClientOriginalName();
                 $image->move('images', $name);
 
 
                 $photos[] = $name;
             }
          }
+
+
 
         $req['photo'] = implode(',', $photos);
 
@@ -112,6 +114,7 @@ class ProductController extends Controller
         $product = new Product;
         $product->product_code = generateFiledCode('PRODUCT');
         $product->title = $request->input('title');
+        $product->photo_highlight = $photos[0];
         $product->slug = str_slug($req['title']);
         $product->no_product = $request->input('no_product');
         $product->sn_product = $request->input('sn_product');

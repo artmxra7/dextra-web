@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends ApiController
 {
-    //
 
     protected $authRepository;
     protected $userService;
