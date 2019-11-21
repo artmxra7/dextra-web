@@ -4,12 +4,12 @@
 
 @section('content')
     <div class="m-grid m-grid--hor m-grid--root m-page">
-        <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-1" id="m_login" style="background-image: url({{ asset('metronic/assets/app/media/img//bg/bg-1.jpg') }});">
+        <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-1" id="m_login" style="background-image: url({{ asset('metronic/assets/app/media/img/bg/bg-1.jpg') }});">
             <div class="m-grid__item m-grid__item--fluid m-login__wrapper">
                 <div class="m-login__container">
                     <div class="m-login__logo">
                         <a href="#">
-                            <img src="{{ asset('metronic/assets/app/media/img/logos/logo.png') }}">
+                            <img src="{{ asset('public/metronic/assets/app/media/img/logos/logo.png') }}">
                         </a>
                     </div>
                     <div class="m-login__signin">

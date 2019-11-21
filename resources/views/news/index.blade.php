@@ -123,7 +123,7 @@
                       {data: 'news_title', name: 'news_title'},
                       {data: 'news_category_name', name: 'name'},
                       {data: 'news_media', name: 'news_media', render: function( data, type, full, meta ) {
-                        return '<img src="storage/cover_images/'+ data + '" width="150px" height="150px">';
+                        return '<img src="/public/storage/cover_images/'+ data + '" width="150px" height="150px">';
 
                     }},
                       {data: 'news_content', name: 'news_content', "render": function ( data, type, row, meta ) {
