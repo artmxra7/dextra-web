@@ -48,6 +48,9 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {
 
     //news
     Route::resource('product', 'Api\ProductController');
+    Route::post('/sparepart/order', 'Api\User\ProductController@updateFCM');
+
+
 
 });
 
