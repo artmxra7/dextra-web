@@ -9,7 +9,7 @@
                 <div class="m-login__container">
                     <div class="m-login__logo">
                         <a href="#">
-                            <img src="{{ asset('public/metronic/assets/app/media/img/logos/logo.png') }}">
+                            <img src="{{ asset('metronic/assets/app/media/img/logos/logo.png') }}">
                         </a>
                     </div>
                     <div class="m-login__signin">
